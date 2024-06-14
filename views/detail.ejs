@@ -1,0 +1,55 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Contact Details</h2>
+      <% if (!acc) { %>
+      <div class="alert alert-danger fw-bold" role="alert">
+        Not found in database
+        <br />
+        <a href="/accounts" class="alert-link fw-normal"
+          >&laquo; Back to account list</a
+        >.
+      </div>
+      <% } else {%>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title"><%= acc.nama %></h5>
+          <h6 class="card-subtitle mb-2 mt-1 text-body-secondary">
+            <%= acc.nohp %>
+          </h6>
+          <h6 class="card-subtitle mb-2 mt-1 text-body-secondary">
+            <%= acc.alamat %>
+          </h6>
+          <p class="card-text"><%= acc.gender %></p>
+          <!-- <a
+            href="/accounts/delete/<%= acc.nama %>"
+            class="btn btn-danger badge"
+            onclick="return confirm('Are you sure delete this <%= acc.nama %> account?')"
+            >Delete</a
+          > -->
+          <form
+            method="POST"
+            action="/accounts?_method=DELETE"
+            class="d-inline"
+          >
+            <input type="hidden" name="nama" value="<%= acc.nama %>" />
+            <button
+              type="submit"
+              class="btn btn-danger badge"
+              onclick="return confirm('Are you sure?')"
+            >
+              Delete
+            </button>
+          </form>
+          <a href="/accounts/edit/<%= acc.nama %>" class="btn btn-warning badge"
+            >Edit</a
+          >
+          <a href="/accounts" class="card-link d-block mt-3"
+            >&laquo; Back to account list</a
+          >
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

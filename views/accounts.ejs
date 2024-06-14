@@ -1,0 +1,48 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Accounts</h2>
+      <a href="/accounts/add" class="btn btn-primary mb-2">Add new account</a>
+      <table class="table">
+        <% if (msg.length !== 0) { %>
+        <div class="alert alert-success" role="alert"><%= msg %></div>
+
+        <% } %>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">No Hp</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <% if (accounts.length === 0) { %>
+        <tr>
+          <td colspan="4">
+            <div class="alert alert-danger fw-bold" role="alert">
+              No data in database.
+            </div>
+          </td>
+        </tr>
+
+        <% } %>
+        <tbody>
+          <% accounts.forEach((account, i) => { i++%>
+          <tr>
+            <th scope="row"><%= i++ %></th>
+            <td><%= account.nama %></td>
+            <td><%= account.nohp %></td>
+            <td>
+              <a
+                href="/accounts/<%= account.nama %>"
+                class="btn btn-success badge rounded-pill"
+                ><i class="bi bi-info-circle"> Detail</i></a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

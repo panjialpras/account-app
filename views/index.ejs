@@ -1,0 +1,12 @@
+<h1>Homepage</h1>
+<p>Selamat datang <%= name%></p>
+<h4>List Karyawan</h4>
+<% if (karyawan.length < 1) { %>
+<p>Data karyawan masih kosong</p>
+<% } %> <% karyawan.forEach(krw => { %>
+<ul>
+  <li>Nama: <%= krw.nama %></li>
+  <li>Email: <%= krw.email %></li>
+  <li>Gaji: <%= krw.gaji %></li>
+</ul>
+<% }) %>
